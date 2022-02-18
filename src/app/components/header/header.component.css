@@ -1,0 +1,27 @@
+#header{
+    width: 90%;
+    height: 50px;
+    background-color: #458286;
+    position: fixed;
+    margin-left: 0;
+    padding-left: 0;
+}
+.logoArgProg img{
+    width: 100px;
+    display: inline;
+    float: left;
+}
+#title{
+    color: #264749;
+    display: inline;
+    float: left;
+    text-align: center;
+    margin-top: 15px;
+}
+.btn, .btn-outline-primary{
+    display: inline;
+    float: right;
+    color: #264749;
+    border-color: #264749;
+    margin-top: 5px;
+}
