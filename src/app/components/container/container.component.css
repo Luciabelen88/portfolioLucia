@@ -1,0 +1,23 @@
+#sectionContainer{
+    position: absolute;
+    width: 80%;
+    display: inline-block;
+    align-content: center;
+    height: auto;
+    background-color: #d7dfe3;
+    margin-top: 50px;
+    right: 0;
+    margin-right: 0%;
+    
+}
+
+@media (max-width: 800px), (max-width: 1200px) {
+    #sectionContainer{
+        position: absolute;
+
+        width: 100%;
+        
+        
+        
+    }
+}

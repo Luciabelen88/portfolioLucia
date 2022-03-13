@@ -1,0 +1,26 @@
+<div id="intro">
+  <div class="col-md-12">
+    <div class="card">
+      <img class="card-img-top" [src]="introObject.background_img" alt="Card image cap" />
+      <div class="card-body little-profile text-center">
+        <div class="pro-img">
+          
+          <img [src]="introObject.profile_img" alt="user" />
+        </div>
+        
+        <h3 class="m-b-0">{{ introObject.complete_name }}</h3>
+        <p>{{ introObject.profession }}</p>
+        <a
+          class="btn btn-info"
+          [href]="introObject.cv_doc"
+          target="_blank"
+          data-aos="zoom-in"
+          data-aos-anchor="data-aos-anchor"
+          >View CV</a
+        >
+        
+      </div>
+  <app-edit-btn  routerLink=""></app-edit-btn>
+    </div>
+  </div>
+</div>

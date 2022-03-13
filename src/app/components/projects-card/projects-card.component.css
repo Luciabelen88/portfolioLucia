@@ -1,0 +1,25 @@
+.card {
+  display: inline-block;
+  vertical-align: middle;
+  margin : 7px;
+  color: #a8a9b4;  
+  border-radius: 10px;
+  background: #264749;
+  border: 1px solid #458286;
+
+}
+
+.btn {
+  border: 5px solid;
+  border-image-slice: 1;
+  background: var(--gradient) !important;
+  color: #a8a9b4;
+  transition: all 0.4s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  border: 5px solid #fff !important;
+  box-shadow: #a8a9b4 1px 0 10px;
+  text-decoration: underline;
+}

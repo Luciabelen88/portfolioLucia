@@ -1,8 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+
 body{
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: #61aaaf;    
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
+    background-color: #d7dfe3;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.green-snackbar {
+    background: #05c5a5;
+    color: white;
+    position: absolute;
+    top: 5%;
+    right: 0;
+    z-index: 999999999;
+    border-radius: 0.5%;
+  }
+  
+  .red-snackbar {
+    background: #d43b3b;
+    color: white;
+    position: absolute;
+    top: 5%;
+    right: 0;
+    z-index: 999999999;
+    border-radius: 0.5%;
+  }
+  

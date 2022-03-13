@@ -1,0 +1,43 @@
+<app-section title="About Me">
+
+  <app-edit-btn  routerLink="form/about-form"></app-edit-btn>
+
+  <ng-container>
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="card-body">
+          <p text-align="justify">{{ aboutObject.about_text }}</p>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="card-body">
+          <div class="h4 mt-0 title">Basic Information</div>
+          <div class="row">
+            <div class="col-sm-4">
+              <strong class="text-uppercase">Date of Birth:</strong>
+            </div>
+            <div class="col-sm-8">{{ aboutObject.date_birth }}</div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-sm-4">
+              <strong class="text-uppercase">Email:</strong>
+            </div>
+            <div class="col-sm-8">{{ aboutObject.email }}</div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-sm-4">
+              <strong class="text-uppercase">Country:</strong>
+            </div>
+            <div class="col-sm-8">{{ aboutObject.country }}</div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-sm-4">
+              <strong class="text-uppercase">City:</strong>
+            </div>
+            <div class="col-sm-8">{{ aboutObject.city }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</app-section>

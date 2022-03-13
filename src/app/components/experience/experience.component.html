@@ -1,0 +1,22 @@
+<app-section id="experience"
+  title="Experience"
+  description="Aquí se muestran las experiences jaja"
+>
+  <ng-container *ngFor="let experience of experienceList | paginate: { id: 'experiencePaginator',
+  itemsPerPage: 2,
+  currentPage: currentPageExperience
+ }">
+    <app-background-card
+      [logo_url]="experience.logo_url"
+      [title]="experience.title"
+      [start_period]="experience.start_period"
+      [finish_period]="experience.finish_period"
+      [site]="experience.site"
+      [description]="experience.description"
+    ></app-background-card>
+  </ng-container>
+  <pagination-controls  id="experiencePaginator"
+                      (pageChange)="currentPageExperience=$event"
+                      previousLabel="Previous"
+                      nextLabel="Next"></pagination-controls>
+</app-section> 

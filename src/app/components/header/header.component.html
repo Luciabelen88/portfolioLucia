@@ -4,9 +4,9 @@
       <img
         src="//argentinaprograma.inti.gob.ar/pluginfile.php/1/theme_moove/logo/1644786062/APLogo-20-20.png"
         alt="argProgLogo"
-      />
-    </div>
-    <p id="title">{{ title }}</p>
-    <button class="btn btn-outline-primary me-2">Login</button>
+      /><p id="title">{{ title }} </p>
+    </div>    
+    <button *ngIf="!(service.isLoggedIn())" type="button" class="btn btn-outline-primary me-2" routerLink="/login">Login</button>
+    <button *ngIf="service.isLoggedIn()" type="button" (click)="service.logout()" class="btn btn-outline-primary me-2" >Log Out</button>
   </div>
 </header>

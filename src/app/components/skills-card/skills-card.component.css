@@ -1,0 +1,118 @@
+
+
+
+  .card {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(to right, #264749, #61aaaf) !important;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1),
+      0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1),
+      0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12),
+      0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
+  }
+
+  
+  .levels {
+    display: inline-flex;
+    width: 100%;
+  }
+  .level {
+    display: inline;
+    margin: auto;
+  }
+  
+  
+  .colorAdvanced {
+    background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%) !important;
+    color: #fff;
+  }
+  
+  .colorIntermediate {
+    background: linear-gradient(to right, #f9900e, #ffba56) !important;
+    color: #fff;
+  }
+  
+  .colorBeginner {
+    background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+    color: #fff;
+  }
+  .card-title {
+    margin: auto;
+  }
+  .card-desc {
+    margin: auto;
+  }
+
+ h5 {
+   font-size: 96%;
+ }
+
+ h4 {
+   font-size: 110%;
+   color: #fff;
+ }
+  
+  @media (max-width: 800px), (max-width: 1200px) {
+    .card {
+      background: linear-gradient(to right, #264749, #61aaaf) !important;
+      color: #fff;
+      border-radius: 10px;
+      border: none;
+      margin-top: 3%;
+      margin-bottom: 3%;
+      box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1),
+        0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1),
+        0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12),
+        0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
+    }
+  
+    
+    .levels {
+      display: inline-flex;
+      width: 100%;
+    }
+    .level {
+      display: inline;
+      margin: auto;
+    }
+    
+    
+    .colorAdvanced {
+      background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%) !important;
+      color: #fff;
+    }
+    
+    .colorIntermediate {
+      background: linear-gradient(to right, #f9900e, #ffba56) !important;
+      color: #fff;
+    }
+    
+    .colorBeginner {
+      background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+      color: #fff;
+    }
+    .card-title {
+      margin: auto;
+    }
+    .card-desc {
+      margin: auto;
+    }
+  
+   h5 {
+     font-size: 96%;
+   }
+  
+   h4 {
+     font-size: 110%;
+     color: #fff;
+   }
+  }
+  

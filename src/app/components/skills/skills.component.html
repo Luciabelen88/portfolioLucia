@@ -1,0 +1,32 @@
+<app-section id="skills"
+  title="Hard & Soft skills"
+  description="Aquí se muestran las habilidades duras y blandas"
+>
+  <ng-container
+    *ngFor="
+      let skill of skillsList
+        | paginate
+          : {
+              id: 'skillPaginator',
+              itemsPerPage: 3,
+              currentPage: currentPageSkill
+            }
+    "
+  >
+    <app-skills-card
+    (newItemEvent)=" deleteSkill($event)"
+      [title]="skill.title"
+      [description]="skill.description"
+      [skill_level]="skill.skill_level"
+      [skillId]="skill.skills_id"
+    ></app-skills-card>
+  </ng-container>
+  <pagination-controls
+  *ngIf="skillsList.length != 0"
+    id="skillPaginator"
+    (pageChange)="currentPageSkill = $event"
+    previousLabel="Previous"
+    nextLabel="Next"
+  ></pagination-controls>
+  <app-add-btn routerLink="newskill"></app-add-btn>
+</app-section>

@@ -1,0 +1,54 @@
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+
+.btn-back {
+  border: #61aaaf;
+  background-color: #61aaaf;
+}
+#footer {
+  padding: 15px;
+  color: #264749;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 300px;
+  z-index: 9999;
+  background: #61aaaf;
+  width: 100%;
+  height: 5%;
+}
+.copyright {
+  margin-left: 3%;
+  margin-top: -0.5%;
+  display: inline;
+}
+.copyright p {
+  float: right;
+}
+
+@media (max-width: 1199px) {
+  #footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    height: 5%;
+  }
+  .copyright p {
+    margin-left: 3%;
+  }
+}
+@media (max-width: 600px) {
+  #footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    height: 8%;
+  }
+  .copyright p {
+    float: right;
+    margin-left: 3%;
+  }
+}

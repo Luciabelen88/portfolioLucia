@@ -1,0 +1,38 @@
+<app-section id="education"
+  title="Education"
+  description="Aquí se muestran los cursos, carreras y demás jaja"
+>
+  <ng-container
+    *ngFor="
+      let education of educationList
+        | paginate
+          : {
+              id: 'educationPaginator',
+              itemsPerPage: 2,
+              currentPage: currentPageEducation
+            }
+    "
+  >
+    <app-background-card
+      (newItemEvent)="deleteEducation($event)"
+      [logo_url]="education.logo_url"
+      [title]="education.title"
+      [start_period]="education.start_period"
+      [finish_period]="education.finish_period"
+      [site]="education.site"
+      [description]="education.description"
+      [educationId]="education.education_id"
+    ></app-background-card>
+  </ng-container>
+  <p *ngIf="educationList.length === 0">
+    <b>No education added yet.</b>
+  </p>
+  <pagination-controls
+    *ngIf="educationList.length != 0"
+    id="educationPaginator"
+    (pageChange)="currentPageEducation = $event"
+    previousLabel="Previous"
+    nextLabel="Next"
+  ></pagination-controls>
+  <app-add-btn routerLink="neweducation"></app-add-btn>
+</app-section>

@@ -1,0 +1,20 @@
+.btn {
+  float: right;
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border-color: rgb(211, 211, 211);
+  background-color: rgb(211, 211, 211);
+  cursor: pointer;
+  margin: 2px;
+}
+
+.edit-btn {
+  display: inline-block;
+  fill: grey;
+  width: 20px;
+  margin-left: -3px;
+  margin-bottom: 15px;
+}
