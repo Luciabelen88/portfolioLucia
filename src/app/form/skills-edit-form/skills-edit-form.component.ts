@@ -20,11 +20,13 @@ export class SkillsEditFormComponent implements OnInit {
   levels: any;
   authorData: any;
   user_name: string = '';
+  IsProcessing = 'hidden';
+  invalidEdit = 'hidden';
 
   skillform = new FormGroup({
-    title: new FormControl(''),
-    description: new FormControl(''),
-    skill_level: new FormControl(''),
+    title: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    skill_level: new FormControl('', Validators.required),
   });
 
   get title() {
@@ -47,9 +49,9 @@ export class SkillsEditFormComponent implements OnInit {
   ) {}
 
   onSubmit(event: Event) {
+    this.IsProcessing = 'visible';
     event.preventDefault;
     if (this.skillform.valid) {
-      //this.loadingRequest = "visible";
       this.service
         .edit({
           skills_id: this.skillsUpdate.skills_id,
@@ -60,6 +62,7 @@ export class SkillsEditFormComponent implements OnInit {
         })
         .subscribe({
           next: (response: any) => {
+            this.IsProcessing = 'hidden';
             snackBar(
               this.snackBar,
               "Update Skill  : '" +
@@ -73,6 +76,8 @@ export class SkillsEditFormComponent implements OnInit {
             this.router.navigate(['/']);
           },
           error: (error: any) => {
+            this.invalidEdit = 'visible';
+            this.IsProcessing = 'hidden';
             snackBar(
               this.snackBar,
               `${error.error.error}`,
@@ -122,7 +127,9 @@ export class SkillsEditFormComponent implements OnInit {
               .map((node: any) => node.skills_id)
               .indexOf(parseInt(this.skillsIdUpdate))
           ];
-        console.log(this.skillsUpdate);
+        this.title?.setValue(this.skillsUpdate.title);
+        this.description?.setValue(this.skillsUpdate.description);
+        this.skill_level?.setValue(this.skillsUpdate.skill_level);
         if (!this.skillsUpdate) {
           this.router.navigate(['/notfound']);
         }

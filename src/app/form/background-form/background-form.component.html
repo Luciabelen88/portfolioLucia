@@ -19,6 +19,7 @@
             <div class="form-group">
               <label for="titleForm">Title</label>
               <input formControlName="title" id="title" type="title" class="form-control"  />              
+              <div *ngIf="title!.touched && title!.invalid" class="alert alert-danger">title is required</div>
             </div>
 
             <div class="form-group">
@@ -28,6 +29,7 @@
                 class="form-control"
                 id="start_period"
               />
+              <div *ngIf="start_period!.touched && start_period!.invalid" class="alert alert-danger">start_period is required</div>
             </div>
             <div class="form-group">
               <label for="start_periodForm">Finish period</label>
@@ -36,10 +38,12 @@
                 class="form-control"
                 id="finish_period"
               />
+              <div *ngIf="finish_period!.touched && finish_period!.invalid" class="alert alert-danger">finish_period is required</div>
             </div>
             <div class="form-group">
               <label for="siteForm">Site</label>
               <input formControlName="site" id="site" type="text" class="form-control" />
+              <div *ngIf="site!.touched && site!.invalid" class="alert alert-danger">site is required</div>
             </div>
 
             <div class="form-group">

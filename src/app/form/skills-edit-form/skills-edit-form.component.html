@@ -1,10 +1,13 @@
 <div class="container">
+  <div [style]="{'visibility': invalidEdit}" class="alert alert-danger" role="alert">
+    This Skill could not be editted!
+  </div>
   <div class="row">
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
       <div class="card border-0 shadow rounded-3 my-5">
         <div class="card-body p-4 p-sm-5">
           <h3 class="card-title text-center">
-            Add Skill 
+            Edit  Skill  '{{skillsUpdate?.title}}'
           </h3>
 <form [formGroup]="skillform" (ngSubmit)="onSubmit($event)">
   <h1>Edit Hard or Soft Skill '{{skillsUpdate?.title }}'</h1>
@@ -36,7 +39,7 @@
          Back to Portfolio
         </button>
       </div>
-  
+      <mat-progress-bar [style]="{'visibility': IsProcessing}" mode="indeterminate"></mat-progress-bar>
 </form>
 
 </div>

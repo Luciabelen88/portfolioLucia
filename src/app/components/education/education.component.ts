@@ -42,7 +42,6 @@ export class EducationComponent implements OnInit {
       next: (response: any) => {
         this.educationList = response;
         this.AuxiliarEducationList = response;
-        console.log( this.AuxiliarEducationList );
       }
     });
     

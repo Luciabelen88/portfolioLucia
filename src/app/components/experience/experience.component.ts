@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ExperienceService } from '../service/experience.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { snackBar } from 'src/app/buttons/snackBarFunction';
 
 @Component({
   selector: 'app-experience',
@@ -8,27 +10,36 @@ import { ExperienceService } from '../service/experience.service';
 })
 export class ExperienceComponent implements OnInit {
     
-  experienceList : any = [{}];
+  experienceList : any[any] = [];
+  AuxiliarExperienceList: any[any] = [];
   public currentPageExperience: number = 1;
 
-  constructor(private service: ExperienceService) {
-     
+  constructor(private service: ExperienceService, private snackBar: MatSnackBar) {
+  }
+  deleteExperience(event: any) {
+    this.experienceList = this.experienceList.filter(
+      (node: any) => node.experience_id !== event.id 
+    );
+    this.service.delete(event.id).subscribe({
+      next: (response:any)  => {
+        this.AuxiliarExperienceList = this.experienceList;
+        snackBar(this.snackBar, " Experience: '" +  event.title + " 'eliminated", 'red-snackbar', "X" );
+   },
+    error: (error:any) => {
+      snackBar(this.snackBar, `Sorry ${event.title} could not be eliminated because of error ${error.error.error}`, "red-snackbar", "X" );
+      this.experienceList = this.AuxiliarExperienceList;
+    }
+    });
   }
 
   ngOnInit(): void {
-    this.service.getAll().subscribe(
-      (response:any) => {
-        this. experienceList = response;
-        this. experienceList = this. experienceList[0];
-      },
-      (error: Response) => {
-        if (error.status === 404) {
-          alert("We can't find the resource");
-        } else {
-          alert('An unexpected error ocurred');
-        }
+    this.service.getAll().subscribe({
+      next: (response: any) => {
+        this.experienceList = response;
+        this.AuxiliarExperienceList = response;
       }
-    );
+    });
+    
   }
 
 }

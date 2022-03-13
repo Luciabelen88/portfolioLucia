@@ -49,6 +49,8 @@ import { ProjectsAddFormComponent } from './form/projects-add-form/projects-add-
 import { AboutmeEditFormComponent } from './form/aboutme-edit-form/aboutme-edit-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SkillsLevelsService } from './components/service/skills_levels.service';
+import { EducationCardComponent } from './components/education-card/education-card.component';
+import { ExperienceCardComponent } from './components/experience-card/experience-card.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,8 @@ import { SkillsLevelsService } from './components/service/skills_levels.service'
     ProjectsEditFormComponent,
     ProjectsAddFormComponent,
     AboutmeEditFormComponent,
+    EducationCardComponent,
+    ExperienceCardComponent,
   
   ],
   imports: [
@@ -101,7 +105,8 @@ import { SkillsLevelsService } from './components/service/skills_levels.service'
       
       { path: 'editeducation/:educationId', component: BackgroundFormComponent },
       { path: 'neweducation', component: EducationAddFormComponent },
-      
+      { path: 'editexperience/:experienceId', component: ExperienceEditFormComponent },
+      { path: 'newexperience', component: ExperienceAddFormComponent },
       { path: 'editSkill/:skillId', component: SkillsEditFormComponent },
       { path: 'newskill', component: SkillsAddFormComponent },
 

@@ -21,6 +21,9 @@
       [skillId]="skill.skills_id"
     ></app-skills-card>
   </ng-container>
+  <p *ngIf="skillsList.length === 0">
+    <b>No skill added yet.</b>
+  </p>
   <pagination-controls
   *ngIf="skillsList.length != 0"
     id="skillPaginator"

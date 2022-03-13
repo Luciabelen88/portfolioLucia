@@ -11,8 +11,8 @@ import { snackBar } from 'src/app/buttons/snackBarFunction';
 })
 export class SkillsComponent implements OnInit {
   public currentPageSkill: number = 1;
-  skillsList: any = [];
-  auxiliarSkillsList: any = [];
+  skillsList: any[any] = [];
+  auxiliarSkillsList: any[any] = [];
 
   constructor(private service: SkillsService, private snackBar: MatSnackBar) {
     // let service = new SkillsService();

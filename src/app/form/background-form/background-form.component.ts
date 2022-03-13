@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EducationService } from 'src/app/components/service/education.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -20,10 +20,10 @@ export class BackgroundFormComponent implements OnInit {
 
   form = new FormGroup({
     logo_url: new FormControl(''),
-    title: new FormControl(''),
-    start_period: new FormControl(''),
-    finish_period: new FormControl(''),
-    site: new FormControl(''),
+    title: new FormControl('', Validators.required),
+    start_period: new FormControl('', Validators.required),
+    finish_period: new FormControl('', Validators.required),
+    site: new FormControl('', Validators.required),
     description: new FormControl(''),
   });
 

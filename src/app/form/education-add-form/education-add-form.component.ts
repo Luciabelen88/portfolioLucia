@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./education-add-form.component.css'],
 })
 export class EducationAddFormComponent implements OnInit {
+  IsProcessing = 'hidden';
+  invalidAdd = 'hidden';
+  
   form = new FormGroup({
     logo_url: new FormControl(''),
     title: new FormControl('', Validators.required),
@@ -51,14 +54,7 @@ export class EducationAddFormComponent implements OnInit {
   private userName: string = '';
 
   onSubmit(event: Event) {
-    console.log({education_id: "",
-    logo_url: this.logo_url?.value,
-    title: this.title?.value,
-    start_period: this.start_period?.value,
-    finish_period: this.finish_period?.value,
-    site: this.site?.value,
-    description: this.description?.value,
-    autor: this.userName,});
+    this.IsProcessing = 'visible';
     event.preventDefault;
     if (this.form.valid) {
       this.service
@@ -74,6 +70,7 @@ export class EducationAddFormComponent implements OnInit {
         })
         .subscribe({
           next: (response) => {
+            this.IsProcessing = 'hidden';
             snackBar(
               this.snackBar,
               'New Education Added : ' + "'" + this.title?.value + "'",
@@ -84,6 +81,8 @@ export class EducationAddFormComponent implements OnInit {
             this.form.markAsUntouched();
           },
           error: (error: any) => {
+            this.invalidAdd = 'visible';
+            this.IsProcessing = 'hidden';
             snackBar(
               this.snackBar,
               `${error.error.error}`,

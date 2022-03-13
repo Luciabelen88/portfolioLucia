@@ -2,12 +2,12 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 
 @Component({
-  selector: 'app-background-card',
-  templateUrl: './background-card.component.html',
-  styleUrls: ['./background-card.component.css'],
+  selector: 'app-experience-card',
+  templateUrl: './experience-card.component.html',
+  styleUrls: ['./experience-card.component.css']
 })
-export class BackgroundCardComponent implements OnInit {
-  @Input() educationId: number = 0;
+export class ExperienceCardComponent implements OnInit {
+  @Input() experienceId: number = 0;
   @Input() logo_url: string = '';
   @Input() title: string = '';
   @Input() start_period: string = '';
@@ -19,13 +19,14 @@ export class BackgroundCardComponent implements OnInit {
 
   constructor(public service: AuthService) {}
 
-  deleteEducation() {
+  deleteExperience() {
     this.newItemEvent.emit({
-      id: this.educationId,
+      id: this.experienceId,
       title: this.title
     });
   } 
 
-  ngOnInit(): void {} 
+  ngOnInit(): void {
+  }
+
 }
- 

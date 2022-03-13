@@ -1,6 +1,6 @@
 <div class="background-item">
   <div class="buttons"  *ngIf="service.isLoggedIn()">
-    <app-delete-btn (click)="deleteEducation()"></app-delete-btn>
+    <app-delete-btn (click)="deleteEducation()"> </app-delete-btn>
     <app-edit-btn [routerLink]="'editeducation/' + educationId"></app-edit-btn>
   </div>
   <img class="logo" [src]="logo_url" alt="logo" />
