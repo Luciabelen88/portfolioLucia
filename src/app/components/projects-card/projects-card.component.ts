@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-projects-card',
@@ -6,14 +7,23 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./projects-card.component.css']
 })
 export class ProjectsCardComponent implements OnInit {
-
+  @Input() projectId: number = 0;
   @Input() title:string ='';
   @Input() description:string ='';
   @Input() date:string = '';
   @Input() projectImage:string = '';
   @Input() linkGithub: string = '';
 
-  constructor() { }
+  @Output() newItemEvent = new EventEmitter();
+
+  constructor(public service: AuthService) { }
+
+  deleteProject() {
+    this.newItemEvent.emit({
+      id: this.projectId,
+      title: this.title
+    });
+  } 
 
   ngOnInit(): void {
   }

@@ -29,4 +29,4 @@ export class ExperienceCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-}
+} 

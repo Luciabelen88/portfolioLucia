@@ -1,1 +1,74 @@
-<p>projects-add-form works!</p>
+<div class="container">
+    <div [style]="{'visibility': invalidAdd}" class="alert alert-danger" role="alert">
+      This Project could not be editted!
+    </div>
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card border-0 shadow rounded-3 my-5">
+          <div class="card-body p-4 p-sm-5">
+            <h3 class="card-title text-center">
+              Add Project 
+            </h3>
+  
+            <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+              
+  
+              <div class="form-group">
+                <label for="titleForm">Title</label>
+                <input formControlName="title" id="title" type="title" class="form-control"  />              
+                <div *ngIf="title!.touched && title!.invalid" class="alert alert-danger">title is required</div>
+              </div>
+  
+              <div class="form-group">
+                <label for="start_periodForm">Date</label>
+                <input formControlName="date"
+                type="date"
+                  class="form-control"
+                  id="date"
+                />
+                <div *ngIf="date!.touched && date!.invalid" class="alert alert-danger">date is required</div>
+              </div>
+              <label for="emailForm">Description</label>
+                <textarea
+                formControlName="description" id="description"
+                  fid="emailForm"
+                  type="description"
+                  class="form-control"
+                  rows="3"
+                ></textarea>
+              
+              <div class="form-group">
+                <label for="project_imgForm"></label>
+                <input formControlName="project_img" type="file" class="form-control-file" id="project_img" />
+              </div>
+              <div class="form-group">
+                <div class="form-group">
+                    <label for="siteForm">link_github</label>
+                    <input formControlName="link_github" id="link_github" type="text" class="form-control" />
+                    <div *ngIf="link_github!.touched && link_github!.invalid" class="alert alert-danger">link_github is required</div>
+                  </div>
+              </div>
+              <div class="d-grid mb-2">
+              <button type="submit" class="btn btn-info btn-login text-uppercase fw-bold" >
+                Submit
+              </button>
+            </div>
+              <div class="d-grid mb-2">
+                <button class="btn btn-back btn-login text-uppercase fw-bold" type="submit" routerLink="">
+                 Back to Portfolio
+                </button>
+              </div>
+              <mat-progress-bar [style]="{'visibility': IsProcessing}" mode="indeterminate"></mat-progress-bar>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+    <div class="copyright">
+      &copy; <strong><span>Lucia Belen Croci</span></strong>
+      <p>Portfolio Web - Trabajo final Argentina Programa</p>
+    </div>
+  </footer>
+  

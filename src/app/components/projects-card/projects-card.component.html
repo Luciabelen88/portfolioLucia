@@ -1,7 +1,8 @@
 <div class="card" style="width: 18rem">
-  <app-delete-btn></app-delete-btn>
-  <app-add-btn></app-add-btn>
-  <app-edit-btn></app-edit-btn>
+  <div class="buttons"  *ngIf="service.isLoggedIn()">
+    <app-delete-btn (click)="deleteProject()"> </app-delete-btn>
+    <app-edit-btn [routerLink]="'editproject/' + projectId"></app-edit-btn>
+  </div>
   <img [src]="projectImage" class="card-img-top" alt="project image" />
   <div class="card-body">
     <h5 class="card-title">{{ title }}</h5>
@@ -12,3 +13,4 @@
     <a [href]="linkGithub" class="btn"><i class="fab fa-github"></i> Github</a>
   </div>
 </div>
+ 

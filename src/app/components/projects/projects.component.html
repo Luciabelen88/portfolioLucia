@@ -1,21 +1,31 @@
 <app-section title="Projects" description="Aquí se muestran las projects">
-  <div id="project" >
-    <ng-container  *ngFor="let project of projectsList| paginate: { id: 'projectPaginator',
-    itemsPerPage: 4,
-    currentPage: currentPageProject
-   }">
+  <div id="project">
+    <ng-container
+      *ngFor="
+        let project of projectsList
+          | paginate
+            : {
+                id: 'projectPaginator',
+                itemsPerPage: 4,
+                currentPage: currentPageProject
+              }
+      "
+    >
       <app-projects-card
-      [title]="project.title" 
-      [description]="project.description" 
-      [date]="project.date" 
-      [projectImage]="project.projectImage" 
-      [linkGithub]="project.linkGithub"
+      (newItemEvent)="deleteProject($event)"
+        [title]="project.title"
+        [description]="project.description"
+        [date]="project.date"
+        [projectImage]="project.projectImage"
+        [linkGithub]="project.linkGithub"
+        [projectId]="project.project_id"
       ></app-projects-card>
-     </ng-container>
-     <pagination-controls  id="projectPaginator"
-                      (pageChange)="currentPageProject=$event"
-                      previousLabel="Previous"
-                      nextLabel="Next"></pagination-controls>
+    </ng-container>
+    <pagination-controls
+      id="projectPaginator"
+      (pageChange)="currentPageProject = $event"
+      previousLabel="Previous"
+      nextLabel="Next"
+    ></pagination-controls>
   </div>
-  </app-section>
-  
+</app-section>

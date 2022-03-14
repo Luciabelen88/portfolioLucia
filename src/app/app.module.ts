@@ -109,6 +109,8 @@ import { ExperienceCardComponent } from './components/experience-card/experience
       { path: 'newexperience', component: ExperienceAddFormComponent },
       { path: 'editSkill/:skillId', component: SkillsEditFormComponent },
       { path: 'newskill', component: SkillsAddFormComponent },
+      { path: 'editproject/:projectId', component: ProjectsEditFormComponent },
+      { path: 'newproject', component: ProjectsAddFormComponent },
 
       {path: 'error/:statuscode/:statusdescription', component: ErrorComponent },
       { path: '**', component: NotFoundComponent },

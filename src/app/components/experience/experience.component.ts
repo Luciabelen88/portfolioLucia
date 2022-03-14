@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ExperienceService } from '../service/experience.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { snackBar } from 'src/app/buttons/snackBarFunction';
