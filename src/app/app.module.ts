@@ -50,6 +50,7 @@ import { ProjectsAddFormComponent } from './form/projects-add-form/projects-add-
 import { AboutmeEditFormComponent } from './form/aboutme-edit-form/aboutme-edit-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SkillsLevelsService } from './components/service/skills_levels.service';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -98,6 +99,7 @@ import { SkillsLevelsService } from './components/service/skills_levels.service'
     ReactiveFormsModule,
     MatSnackBarModule,
     MatProgressBarModule,
+    MatCardModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },

@@ -2,9 +2,11 @@
     padding: 0 0 20px 20px;
     margin-top: 1%;
     border-left: 2px solid #1f5297;
+    border-bottom: 1px solid #1f5297;
     position: relative;
     margin-left: 4%;
     margin-bottom: 2%;
+    padding: 2%;
   }
   
   .background-item::before {
@@ -18,14 +20,22 @@
     background: #fff;
     border: 2px solid #1f5297;
   }
+  .logodiv{
+    width: 120px;
+    height: 120px;
+    background-color: #1f5297;
+    border-color: black;
+  }
   
   .logo{
-    width: 96px;
+    position: relative;
+    float: left;
+    width: 100px;
+    height: 55px;
     margin-left: -1%;
   }
   .content{
-    margin-top: -5%;
-    margin-left: 110px;
+    margin-left: 90px;
     margin-bottom: 0;
     width: 85%;
   }
@@ -52,17 +62,6 @@
       background: #fff;
       border: 2px solid #1f5297;
     }
-    
-    .logo{
-      width: 120px;
-      margin-left: -10%;
-    }
-    .content{
-      margin-left: 110px;
-      margin-top: -25%;
-      margin-bottom: 0;
-      width: 50%;
-    }
-    
+        
     
   }

@@ -1,10 +1,54 @@
 .background-item {
+  padding: 0 0 20px 20px;
+  margin-top: 1%;
+  border-left: 2px solid #1f5297;
+  border-bottom: 1px solid #1f5297;
+  position: relative;
+  margin-left: 4%;
+  margin-bottom: 2%;
+  padding: 2%;
+}
+
+.background-item::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50px;
+  left: -9px;
+  top: 0;
+  background: #fff;
+  border: 2px solid #1f5297;
+}
+.logodiv{
+  width: 120px;
+  height: 120px;
+  background-color: #1f5297;
+  border-color: black;
+}
+
+.logo{
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 55px;
+  margin-left: -1%;
+}
+.content{
+  margin-left: 90px;
+  margin-bottom: 0;
+  width: 85%;
+}
+
+@media (max-width: 600px) {
+
+  .background-item {
     padding: 0 0 20px 20px;
-    margin-top: 1%;
+    margin-top: -2px;
     border-left: 2px solid #1f5297;
     position: relative;
     margin-left: 4%;
-    margin-bottom: 2%;
+    margin-bottom: 8px;
   }
   
   .background-item::before {
@@ -18,51 +62,6 @@
     background: #fff;
     border: 2px solid #1f5297;
   }
+      
   
-  .logo{
-    width: 96px;
-    margin-left: -1%;
-  }
-  .content{
-    margin-top: -5%;
-    margin-left: 110px;
-    margin-bottom: 0;
-    width: 85%;
-  }
-  
-  @media (max-width: 600px) {
-  
-    .background-item {
-      padding: 0 0 20px 20px;
-      margin-top: -2px;
-      border-left: 2px solid #1f5297;
-      position: relative;
-      margin-left: 4%;
-      margin-bottom: 8px;
-    }
-    
-    .background-item::before {
-      content: "";
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      border-radius: 50px;
-      left: -9px;
-      top: 0;
-      background: #fff;
-      border: 2px solid #1f5297;
-    }
-    
-    .logo{
-      width: 120px;
-      margin-left: -10%;
-    }
-    .content{
-      margin-left: 110px;
-      margin-top: -25%;
-      margin-bottom: 0;
-      width: 50%;
-    }
-    
-    
-  }
+}

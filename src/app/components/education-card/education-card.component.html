@@ -1,16 +1,17 @@
-<div class="background-item">
-    <div class="buttons"  *ngIf="service.isLoggedIn()">
-      <app-delete-btn (click)="deleteEducation()"> </app-delete-btn>
-      <app-edit-btn [routerLink]="'editeducation/' + educationId"></app-edit-btn>
-    </div>
-    <img class="logo" [src]="logo_url" alt="logo" />
-    <div class="content">
-      <h4>{{ title }}</h4>
-      <h5>{{ start_period }} - {{ finish_period }}</h5>
-      <p>
-        <em>{{ site }}</em>
-      </p>
-      <p>{{ description }}</p>
-    </div>
-  </div> 
-  
+<mat-card class="background-item">
+  <div class="buttons" *ngIf="service.isLoggedIn()">
+    <app-delete-btn (click)="deleteEducation()"> </app-delete-btn>
+    <app-edit-btn [routerLink]="'editeducation/' + educationId"></app-edit-btn>
+  </div>
+  <img class="logo" [src]="logo_url" alt="logo" />
+  <mat-card-title-group>
+    <mat-card-title>{{ title }}</mat-card-title>
+    <mat-card-subtitle>{{ site }}</mat-card-subtitle>
+    <mat-card-subtitle
+      >{{ start_period }} - {{ finish_period }}</mat-card-subtitle
+    >
+  </mat-card-title-group>
+  <mat-card-content class="content">
+    <p>{{ description }}</p>
+  </mat-card-content>
+</mat-card>
