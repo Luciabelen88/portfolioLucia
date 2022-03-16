@@ -11,8 +11,8 @@ export class ProjectsCardComponent implements OnInit {
   @Input() title:string ='';
   @Input() description:string ='';
   @Input() date:string = '';
-  @Input() projectImage:string = '';
-  @Input() linkGithub: string = '';
+  @Input() project_img:string = '';
+  @Input() link_github: string = '';
 
   @Output() newItemEvent = new EventEmitter();
 
