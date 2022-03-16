@@ -11,7 +11,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IntroComponent } from './components/intro/intro.component';
 import { AboutComponent } from './components/about/about.component';
 import { EducationComponent } from './components/education/education.component';
-import { BackgroundCardComponent } from './components/background-card/background-card.component';
+import { EducationCardComponent } from './components/education-card/education-card.component';
+import { ExperienceCardComponent } from './components/experience-card/experience-card.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ProjectsCardComponent } from './components/projects-card/projects-card.component';
@@ -49,8 +50,7 @@ import { ProjectsAddFormComponent } from './form/projects-add-form/projects-add-
 import { AboutmeEditFormComponent } from './form/aboutme-edit-form/aboutme-edit-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SkillsLevelsService } from './components/service/skills_levels.service';
-import { EducationCardComponent } from './components/education-card/education-card.component';
-import { ExperienceCardComponent } from './components/experience-card/experience-card.component';
+
 
 @NgModule({
   declarations: [
@@ -61,7 +61,6 @@ import { ExperienceCardComponent } from './components/experience-card/experience
     IntroComponent,
     AboutComponent,
     EducationComponent,
-    BackgroundCardComponent,
     ExperienceComponent,
     SkillsComponent,
     ProjectsCardComponent,
@@ -102,6 +101,7 @@ import { ExperienceCardComponent } from './components/experience-card/experience
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'editauthor/:user_name', component: BackgroundFormComponent },
       
       { path: 'editeducation/:educationId', component: BackgroundFormComponent },
       { path: 'neweducation', component: EducationAddFormComponent },

@@ -31,5 +31,8 @@
     previousLabel="Previous"
     nextLabel="Next"
   ></pagination-controls>
-  <app-add-btn routerLink="newskill"></app-add-btn>
+  
+  <div class="buttons"  *ngIf="Authervice.isLoggedIn()">
+    <app-add-btn routerLink="newskill"></app-add-btn>
+  </div>
 </app-section>

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IntroService } from '../service/intro.service';
 import { Router } from "@angular/router";
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-intro',
@@ -9,8 +10,9 @@ import { Router } from "@angular/router";
 })
 export class IntroComponent implements OnInit {
   introObject: any = {};
+  @Input() user_name: string ='';
 
-  constructor(private service: IntroService, private router: Router) {}
+  constructor(private service: IntroService, private router: Router, public Authervice: AuthService) {}
 
   ngOnInit(): void {
     this.service.getAll().subscribe(

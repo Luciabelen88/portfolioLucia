@@ -1,1 +1,97 @@
-<p>aboutme-edit-form works!</p>
+<div class="container">
+    <div [style]="{'visibility': invalidEdit}" class="alert alert-danger" role="alert">
+      This Project could not be editted!
+    </div>
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card border-0 shadow rounded-3 my-5">
+          <div class="card-body p-4 p-sm-5">
+            <h3 class="card-title text-center">
+              Edit Author '{{ aboutmeUpdate?.title }}'
+            </h3>
+  
+            <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+              
+  
+              <div class="form-group">
+                <label for="emailForm">Email</label>
+                <input formControlName="email" id="email" type="email" class="form-control"  />              
+                <div *ngIf="email!.touched && email!.invalid" class="alert alert-danger">Email is required</div>
+              </div>
+              <div class="form-group">
+                <label for="complete_nameForm">Complete name</label>
+                <input formControlName="complete_name" id="complete_name" type="complete_name" class="form-control"  />              
+                <div *ngIf="complete_name!.touched && complete_name!.invalid" class="alert alert-danger">Complete name is required</div>
+              </div>
+              <div class="form-group">
+                <label for="professionForm">Profession</label>
+                <input formControlName="profession" id="profession" type="profession" class="form-control"  />              
+                <div *ngIf="profession!.touched && profession!.invalid" class="alert alert-danger">profession is required</div>
+              </div>
+              <div class="form-group">
+                <label for="profile_imgForm">Profile image</label>
+                <input formControlName="profile_img" type="file" class="form-control-file" id="profile_img" />
+                <div *ngIf="profile_img!.touched && profile_img!.invalid" class="alert alert-danger">Profile image is required</div>
+              </div>
+              <div class="form-group">
+                <label for="background_imgForm">Backgroung image</label>
+                <input formControlName="background_img" type="file" class="form-control-file" id="background_img" />
+                <div *ngIf="backgound_img!.touched && backgound_img!.invalid" class="alert alert-danger">Backgound image is required</div>
+              </div>
+              <div class="form-group">
+                <label for="cv_docForm">CV file</label>
+                <input formControlName="cv_doc" type="file" class="form-control-file" id="cv_doc" />
+              </div>
+              <div class="form-group">
+                <label for="about_textForm">About me</label>
+                <textarea
+                formControlName="about_text" id="about_text"
+                  type="about_text"
+                  class="form-control"
+                  rows="3"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="date_birthForm">Date of birth</label>
+                <input formControlName="date"
+                type="date"
+                  class="form-control"
+                  id="date"
+                />
+                <div *ngIf="date_birth!.touched && date_birth!.invalid" class="alert alert-danger">date of birth is required</div>
+              </div>
+              <div class="form-group">
+                <label for="countryForm">Country</label>
+                <input formControlName="country" id="country" type="country" class="form-control"  />              
+                <div *ngIf="country!.touched && country!.invalid" class="alert alert-danger">Country name is required</div>
+              </div>
+              <div class="form-group">
+                <label for="cityForm">City</label>
+                <input formControlName="city" id="city" type="city" class="form-control"  />              
+                <div *ngIf="city!.touched && city!.invalid" class="alert alert-danger">City is required</div>
+              </div>         
+
+              <div class="d-grid mb-2">
+              <button type="submit" class="btn btn-info btn-login text-uppercase fw-bold" >
+                Submit
+              </button>
+            </div>
+              <div class="d-grid mb-2">
+                <button class="btn btn-back btn-login text-uppercase fw-bold" type="submit" routerLink="">
+                 Back to Portfolio
+                </button>
+              </div>
+              <mat-progress-bar [style]="{'visibility': IsProcessing}" mode="indeterminate"></mat-progress-bar>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+    <div class="copyright">
+      &copy; <strong><span>Lucia Belen Croci</span></strong>
+      <p>Portfolio Web - Trabajo final Argentina Programa</p>
+    </div>
+  </footer>
+  

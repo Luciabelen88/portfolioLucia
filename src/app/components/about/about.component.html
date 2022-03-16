@@ -1,7 +1,7 @@
 <app-section title="About Me">
-
-  <app-edit-btn  routerLink="form/about-form"></app-edit-btn>
-
+  <div class="buttons"  *ngIf="Authervice.isLoggedIn()">
+  <app-edit-btn [routerLink]="'editauthor/' + user_name"></app-edit-btn>
+</div>
   <ng-container>
     <div class="row">
       <div class="col-lg-6 col-md-12">

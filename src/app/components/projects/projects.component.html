@@ -28,4 +28,7 @@
       nextLabel="Next"
     ></pagination-controls>
   </div>
+  <div class="buttons"  *ngIf="Authervice.isLoggedIn()">
+    <app-add-btn routerLink="newproject"></app-add-btn>
+  </div>
 </app-section>

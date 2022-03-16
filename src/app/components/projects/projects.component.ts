@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from '../service/projects.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { snackBar } from 'src/app/buttons/snackBarFunction';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-projects',
@@ -13,7 +14,7 @@ export class ProjectsComponent implements OnInit {
   AuxiliarProjectsList: any[any] = [];
   public currentPageProject: number = 1;
 
-  constructor(private service: ProjectsService, private snackBar: MatSnackBar) {
+  constructor(private service: ProjectsService, private snackBar: MatSnackBar, public Authervice: AuthService) {
   }
 deleteProject(event: any) {
     this.projectsList = this.projectsList.filter(

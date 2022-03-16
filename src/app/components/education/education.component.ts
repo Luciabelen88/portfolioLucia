@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { EducationService } from '../service/education.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { snackBar } from 'src/app/buttons/snackBarFunction';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-education',
@@ -16,7 +17,8 @@ export class EducationComponent implements OnInit {
 
   constructor(
     private service: EducationService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public Authervice: AuthService
   ) {
     
   }
@@ -36,7 +38,7 @@ export class EducationComponent implements OnInit {
     }
     });
   }
-
+ 
   ngOnInit(): void {
     this.service.getAll().subscribe({
       next: (response: any) => {

@@ -13,7 +13,7 @@
             }
     "
   >
-    <app-background-card
+    <app-education-card
       (newItemEvent)="deleteEducation($event)"
       [logo_url]="education.logo_url"
       [title]="education.title"
@@ -22,7 +22,7 @@
       [site]="education.site"
       [description]="education.description"
       [educationId]="education.education_id"
-    ></app-background-card>
+    ></app-education-card>
   </ng-container>
   <p *ngIf="educationList.length === 0">
     <b>No education added yet.</b>
@@ -34,5 +34,7 @@
     previousLabel="Previous"
     nextLabel="Next"
   ></pagination-controls>
+  <div  *ngIf="Authervice.isLoggedIn()">
   <app-add-btn routerLink="neweducation"></app-add-btn>
+  </div> 
 </app-section>

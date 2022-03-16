@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SkillsService } from '../service/skills.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { snackBar } from 'src/app/buttons/snackBarFunction';
+import { AuthService } from '../service/auth.service';
 
   
 @Component({
@@ -14,7 +15,7 @@ export class SkillsComponent implements OnInit {
   skillsList: any[any] = [];
   auxiliarSkillsList: any[any] = [];
 
-  constructor(private service: SkillsService, private snackBar: MatSnackBar) {
+  constructor(private service: SkillsService, private snackBar: MatSnackBar, public Authervice: AuthService) {
     // let service = new SkillsService();
     // this.skillsList = service.getskill();
     // console.log(this.skillsList);

@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { snackBar } from 'src/app/buttons/snackBarFunction';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+ 
 @Component({
   selector: 'app-background-form',
   templateUrl: './background-form.component.html',

@@ -35,5 +35,7 @@
     previousLabel="Previous"
     nextLabel="Next"
   ></pagination-controls>
+  <div class="buttons"  *ngIf="Authervice.isLoggedIn()">
   <app-add-btn routerLink="newexperience"></app-add-btn>
+</div>
 </app-section>

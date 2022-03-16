@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class EducationAddFormComponent implements OnInit {
   IsProcessing = 'hidden';
   invalidAdd = 'hidden';
-  
+   
   form = new FormGroup({
     logo_url: new FormControl(''),
     title: new FormControl('', Validators.required),

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AboutService } from '../service/about.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-about',
@@ -7,11 +8,12 @@ import { AboutService } from '../service/about.service';
   styleUrls: ['./about.component.css'],
 })
 export class AboutComponent implements OnInit {
-
+  @Input() user_name: string ='';
+ 
 
   aboutObject : any = {};
 
-  constructor(private service: AboutService) {
+  constructor(public service: AboutService, public Authervice: AuthService) {
    
   }
 

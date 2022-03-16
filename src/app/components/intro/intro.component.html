@@ -20,7 +20,9 @@
         >
         
       </div>
-  <app-edit-btn  routerLink=""></app-edit-btn>
+      <div class="buttons"  *ngIf="Authervice.isLoggedIn()">
+        <app-edit-btn [routerLink]="'editauthor/' + user_name"></app-edit-btn>
+      </div>
     </div>
   </div>
 </div>

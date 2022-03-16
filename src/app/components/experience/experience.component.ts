@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ExperienceService } from '../service/experience.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { snackBar } from 'src/app/buttons/snackBarFunction';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-experience',
@@ -14,7 +15,7 @@ export class ExperienceComponent implements OnInit {
   AuxiliarExperienceList: any[any] = [];
   public currentPageExperience: number = 1;
 
-  constructor(private service: ExperienceService, private snackBar: MatSnackBar) {
+  constructor(private service: ExperienceService, private snackBar: MatSnackBar, public Authervice: AuthService) {
   }
   deleteExperience(event: any) {
     this.experienceList = this.experienceList.filter(
