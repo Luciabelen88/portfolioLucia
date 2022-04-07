@@ -51,7 +51,11 @@ import { AboutmeEditFormComponent } from './form/aboutme-edit-form/aboutme-edit-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SkillsLevelsService } from './components/service/skills_levels.service';
 import {MatCardModule} from '@angular/material/card';
-
+import { UploadImageComponent } from './components/upload-image/upload-image.component';
+import { ImageUploadService } from './components/service/imageUpload.service';
+import { SkillsDandDComponent } from './components/skills-dand-d/skills-dand-d.component';
+import { SortSkillsBtnComponent } from './buttons/sort-skills-btn/sort-skills-btn.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -88,6 +92,9 @@ import {MatCardModule} from '@angular/material/card';
     AboutmeEditFormComponent,
     EducationCardComponent,
     ExperienceCardComponent,
+    UploadImageComponent,
+    SkillsDandDComponent,
+    SortSkillsBtnComponent,
   
   ],
   imports: [
@@ -100,6 +107,7 @@ import {MatCardModule} from '@angular/material/card';
     MatSnackBarModule,
     MatProgressBarModule,
     MatCardModule,
+    DragDropModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
@@ -111,6 +119,7 @@ import {MatCardModule} from '@angular/material/card';
       { path: 'newexperience', component: ExperienceAddFormComponent },
       { path: 'editSkill/:skillId', component: SkillsEditFormComponent },
       { path: 'newskill', component: SkillsAddFormComponent },
+      { path: 'sortskill', component: SkillsDandDComponent },
       { path: 'editproject/:projectId', component: ProjectsEditFormComponent },
       { path: 'newproject', component: ProjectsAddFormComponent },
 
@@ -127,7 +136,8 @@ import {MatCardModule} from '@angular/material/card';
     ProjectsService,
     SkillsService,
     AuthService,
-    SkillsLevelsService
+    SkillsLevelsService,
+    ImageUploadService
   ],
   bootstrap: [AppComponent],
 })

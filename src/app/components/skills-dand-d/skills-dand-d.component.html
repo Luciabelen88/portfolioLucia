@@ -1,0 +1,32 @@
+<app-section
+  id="skills"
+  title="Hard & Soft skills"
+  description="Aquí se muestran las habilidades duras y blandas"
+>
+  <ul cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <li cdkDrag class="example-box" *ngFor="let skill of skillsList">
+      <ng-container>
+      <div cdkDropList class="card">
+        <h2 class="card-title">{{ title }}</h2>
+        <h4>{{ description }}</h4>
+        <div class="levels">
+          <h5 class="level">Beginner</h5>
+          <h5 class="level">Intermediate</h5>
+          <h5 class="level">Advanced</h5>
+        </div>
+        <div class="progress mt-1" data-height="8" style="height: 8px">
+          <div
+            [class]="levelClassVariable.classColor"
+            role="progressbar"
+            data-width="25%"
+            aria-valuenow="10"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            [style]="'width:' + levelClassVariable.percent"
+          ></div>
+        </div>
+      </div>
+    </ng-container>
+    </li>
+  </ul>
+</app-section>
