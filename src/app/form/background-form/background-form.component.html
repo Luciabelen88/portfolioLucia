@@ -10,7 +10,7 @@
             Edit Education '{{ educationUpdate?.title }}'
           </h3>
 
-          <form [formGroup]="form" (ngSubmit)="onSubmit($event)" enctype="multipart/form-data">
+          <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
             <div class="form-group">
               <label for="logo_urlForm"></label>
               <input formControlName="logo_url" type="file" class="form-control-file" id="logo_url" accept="image/png, image/jpeg"/>

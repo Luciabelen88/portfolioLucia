@@ -1,11 +1,12 @@
-<app-section id="education"
+<app-section 
+id="education"
   title="Education"
   description="Aquí se muestran los cursos, carreras y demás jaja"
 >
   <ng-container
     *ngFor="
       let education of educationList
-        | paginate
+        | paginate 
           : {
               id: 'educationPaginator',
               itemsPerPage: 2,

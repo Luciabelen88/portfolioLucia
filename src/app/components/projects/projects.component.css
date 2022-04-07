@@ -9,6 +9,7 @@ pagination-controls {
   text-align: center;
   align-items: center;
 }
+
 @media (max-width: 600px) {
 .foot{
   height:70px;

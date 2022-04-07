@@ -1,4 +1,8 @@
 pagination-controls {
     text-align: center;
     align-items: center;
- }
+}
+
+ #experience{
+    scroll-margin-top: 80px;
+}
