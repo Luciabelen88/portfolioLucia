@@ -51,7 +51,6 @@ import { AboutmeEditFormComponent } from './form/aboutme-edit-form/aboutme-edit-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SkillsLevelsService } from './components/service/skills_levels.service';
 import {MatCardModule} from '@angular/material/card';
-import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import { ImageUploadService } from './components/service/imageUpload.service';
 import { SkillsDandDComponent } from './components/skills-dand-d/skills-dand-d.component';
 import { SortSkillsBtnComponent } from './buttons/sort-skills-btn/sort-skills-btn.component';
@@ -92,7 +91,6 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     AboutmeEditFormComponent,
     EducationCardComponent,
     ExperienceCardComponent,
-    UploadImageComponent,
     SkillsDandDComponent,
     SortSkillsBtnComponent,
   

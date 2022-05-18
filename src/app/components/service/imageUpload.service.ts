@@ -8,12 +8,15 @@ import { DataService } from './data.service';
 export class ImageUploadService extends DataService{
   
 
-  constructor( http: HttpClient) {
-    super( url + "/upload/image", http);
-  }
+   constructor( http: HttpClient) {
+     super( url + "/upload/image", http);
+   }
 
-  
 
+
+
+
+ 
   
   
 }
