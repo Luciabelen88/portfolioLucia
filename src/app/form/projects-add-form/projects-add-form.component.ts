@@ -63,7 +63,7 @@ export class ProjectsAddFormComponent implements OnInit {
         this.service
           .add({
             project_id: '',
-            title: this. title?.value,
+            title: this.title?.value,
             description: this.description?.value,
             date: this.date?.value,
             project_img: '',

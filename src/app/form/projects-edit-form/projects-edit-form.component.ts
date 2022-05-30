@@ -71,7 +71,7 @@ export class ProjectsEditFormComponent implements OnInit {
         this.service
           .edit({
             project_id: this.projectUpdate.project_id,
-            title: this. title?.value,
+            title: this.title?.value,
             description: this.description?.value,
             date: this.date?.value,
             project_img: this.projectUpdate.project_img,
@@ -89,7 +89,7 @@ export class ProjectsEditFormComponent implements OnInit {
                 );
                 formData.append('file', this.imageFileToUpload);
                 formData.append('typeEntity', 'project');
-                formData.append('idEntity', res.toString());
+                formData.append('idEntity', res.project_id.toString());
                 return this.fileService
                   .deleteFile(this.projectUpdate.img_deletehash)
                   .pipe(
