@@ -7,6 +7,7 @@ import { snackBar } from 'src/app/buttons/snackBarFunction';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IntroService } from 'src/app/components/service/intro.service';
 import { SkillsLevelsService } from 'src/app/components/service/skills_levels.service';
+import { forkJoin, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-skills-edit-form',
@@ -73,6 +74,7 @@ export class SkillsEditFormComponent implements OnInit {
               'green-snackbar',
               'X'
             );
+            this.skillform.markAsUntouched();
             this.router.navigate(['/']);
           },
           error: (error: any) => {
@@ -103,7 +105,7 @@ export class SkillsEditFormComponent implements OnInit {
     this.author.getAll().subscribe({
       next: (response) => {
         this.authorData = response;
-        this.user_name = this.authorData[0].user_name;
+        this.user_name = this.authorData[0].username;
       },
       error: (error: any) => {
         this.router.navigate([

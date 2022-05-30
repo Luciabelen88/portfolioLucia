@@ -5,7 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { snackBar } from 'src/app/buttons/snackBarFunction';
 import { MatSnackBar } from '@angular/material/snack-bar';
- 
+import { forkJoin, mergeMap, Observable, of } from 'rxjs';
+import { FileServiceService } from 'src/app/file-service/file-service.service';
+import { AboutService } from 'src/app/components/service/about.service';
+
 @Component({
   selector: 'app-background-form',
   templateUrl: './background-form.component.html',
@@ -46,11 +49,25 @@ export class BackgroundFormComponent implements OnInit {
     return this.form.get('description');
   }
 
+  public imageFile: any;
+  private imageFileToUpload: any;
+  public preview: any;
+  public fileMessage: any;
+  private authorData: any;
+  private userName: string = '';
+
+  getImageFile(imageFile: any) {
+    this.imageFile = imageFile;
+  }
+
+
   constructor(
     public router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
-    public service: EducationService
+    public service: EducationService,
+    public fileService: FileServiceService,
+    public authorService: AboutService
   ) {}
 
   onSubmit(event: Event) {
@@ -60,16 +77,43 @@ export class BackgroundFormComponent implements OnInit {
       this.service
         .edit({
           education_id: this.educationUpdate.education_id,
-          logo_url: this.logo_url?.value,
+          logo_url: this.educationUpdate.logo_url,
           title: this.title?.value,
           start_period: this.start_period?.value,
           finish_period: this.finish_period?.value,
           site: this.site?.value,
           description: this.description?.value,
           author: this.educationUpdate.author,
+          education_img_deletehash: this.educationUpdate.education_img_deletehash
         })
+        .pipe(
+          mergeMap((res: any) => {
+            if (this.imageFile) {
+              const formData = new FormData();
+              this.imageFileToUpload = new File(
+                [this.imageFile],
+                this.imageFile.name
+              );
+              formData.append('file', this.imageFileToUpload);
+              formData.append('typeEntity', 'education');
+              formData.append('idEntity', res.toString());
+              return this.fileService
+                .deleteFile(
+                  this.educationUpdate
+                    .education_img_deletehash
+                )
+                .pipe(
+                  mergeMap((re: any) => {
+                    return this.fileService.uploadFile(formData);
+                  })
+                );
+            }
+            return of({});
+          })
+        )
         .subscribe({
           next: (response: any) => {
+            this.router.navigate(['/']);
             this.IsProcessing = 'hidden';
             snackBar(
               this.snackBar,
@@ -88,7 +132,7 @@ export class BackgroundFormComponent implements OnInit {
             this.IsProcessing = 'hidden';
             snackBar(
               this.snackBar,
-              `${error.error.error}`,
+              `${error?.message}`,
               'red-snackbar',
               'X'
             );
@@ -96,10 +140,20 @@ export class BackgroundFormComponent implements OnInit {
         });
     } else {
       this.form.markAllAsTouched();
+      if (!this.imageFile) {
+        this.imageFile = false;
+      }
     }
   }
 
   ngOnInit(): void {
+    this.authorService.getAll().subscribe({
+      next: (response) => {
+        this.authorData = response;
+        this.userName = this.authorData[0].username;
+      },
+    });
+
     this.route.paramMap.subscribe({
       next: (param) => {
         if (param.get('educationId')) {
@@ -122,7 +176,8 @@ export class BackgroundFormComponent implements OnInit {
         this.finish_period?.setValue(this.educationUpdate.finish_period);
         this.site?.setValue(this.educationUpdate.site);
         this.description?.setValue(this.educationUpdate.description);
-
+        this.preview = this.educationUpdate.logo_url;
+    
         if (!this.educationUpdate) {
           this.router.navigate(['/notfound']);
         }

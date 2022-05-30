@@ -67,8 +67,9 @@ export class SkillsAddFormComponent implements OnInit {
               'green-snackbar',
               'x'
             );
-            this.skillform.reset();
+           
             this.skillform.markAsUntouched();
+            this.router.navigate(['/']);
           },
           error: (error: any) => {
             this.invalidAdd = 'visible';
@@ -91,7 +92,7 @@ export class SkillsAddFormComponent implements OnInit {
     this.author.getAll().subscribe({
       next: (response) => {
         this.authorData = response;
-        this.user_name = this.authorData[0].user_name;
+        this.user_name = this.authorData[0].username;
       },
       error: (error: any) => {
         this.router.navigate([

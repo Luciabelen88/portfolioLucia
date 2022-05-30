@@ -6,16 +6,12 @@
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
       <div class="card border-0 shadow rounded-3 my-5">
         <div class="card-body p-4 p-sm-5">
-          <h3 class="card-title text-center">
+          <h2 class="card-title text-center">
             Add Education 
-          </h3>
+          </h2>
+          <app-file-upload [previewUrl]="preview" [fileName]="fileMessage" (imageToUpload)="getImageFile($event)"></app-file-upload>
 <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
-    <!-- <div class="form-group">
-      <label for="logo_urlForm">Logo </label>
-      <input type="file" class="form-control-file" id="logo_urlForm">
-    </div> -->
-    
-     
+       
     <div class="form-group">
       <label for="titleForm">Title</label>
       <input id="titleForm" formControlName="title" type="text" class="form-control" placeholder="Title" />
@@ -48,12 +44,13 @@
     </div>
 
     <div class="form-group">
-      <label for="emailForm">Description</label>
+      <label for="description">Description</label>
       <textarea
-        fid="emailForm"
-        type="text"
+      formControlName="description" id="description"
+        id="description"
+        type="description"
         class="form-control"
-        rows="3"  placeholder="Description"
+        rows="3"
       ></textarea>
     </div>
   

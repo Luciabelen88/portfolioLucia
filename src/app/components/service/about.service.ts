@@ -18,7 +18,7 @@ export interface AboutType {
 export class AboutService extends DataService {
   
  
-  constructor( http: HttpClient) {
+  constructor( http: HttpClient, ) {
     super( url + "/author", http);
   }
 }

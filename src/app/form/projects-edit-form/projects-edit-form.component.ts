@@ -5,6 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { snackBar } from 'src/app/buttons/snackBarFunction';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FileServiceService } from 'src/app/file-service/file-service.service';
+import { forkJoin, mergeMap, Observable, of } from 'rxjs';
+import { AboutService } from 'src/app/components/service/about.service';
+
 
 @Component({
   selector: 'app-projects-edit-form',
@@ -42,10 +46,23 @@ export class ProjectsEditFormComponent implements OnInit {
     return this.form.get('link_github');
   }
 
+  private authorData: any;
+  private userName: string = '';
+  public imageFile: any;
+  private imageFileToUpload: any;
+  public preview: any;
+  public fileMessage: any;
+
+  getImageFile(imageFile: any) {
+    this.imageFile = imageFile;
+  }
+
   constructor(public router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
-    public service: ProjectsService) { }
+    public service: ProjectsService,
+    public fileService: FileServiceService,
+    public authorService: AboutService) { }
 
     onSubmit(event: Event) {
       this.IsProcessing = 'visible';
@@ -54,12 +71,36 @@ export class ProjectsEditFormComponent implements OnInit {
         this.service
           .edit({
             project_id: this.projectUpdate.project_id,
+            title: this. title?.value,
             description: this.description?.value,
             date: this.date?.value,
-            project_img: this.project_img?.value,
+            project_img: this.projectUpdate.project_img,
             link_github: this.link_github?.value,
             author: this.projectUpdate.author,
+            img_deletehash: this.projectUpdate.img_deletehash,
           })
+          .pipe(
+            mergeMap((res: any) => {
+              if (this.imageFile) {
+                const formData = new FormData();
+                this.imageFileToUpload = new File(
+                  [this.imageFile],
+                  this.imageFile.name
+                );
+                formData.append('file', this.imageFileToUpload);
+                formData.append('typeEntity', 'project');
+                formData.append('idEntity', res.toString());
+                return this.fileService
+                  .deleteFile(this.projectUpdate.img_deletehash)
+                  .pipe(
+                    mergeMap((re: any) => {
+                      return this.fileService.uploadFile(formData);
+                    })
+                  );
+              }
+              return of({});
+            })
+          )
           .subscribe({
             next: (response: any) => {
               this.IsProcessing = 'hidden';
@@ -80,7 +121,7 @@ export class ProjectsEditFormComponent implements OnInit {
               this.IsProcessing = 'hidden';
               snackBar(
                 this.snackBar,
-                `${error.error.error}`,
+                `${error?.message}`,
                 'red-snackbar',
                 'X'
               );
@@ -92,6 +133,12 @@ export class ProjectsEditFormComponent implements OnInit {
     }
   
     ngOnInit(): void {
+      this.authorService.getAll().subscribe({
+        next: (response) => {
+          this.authorData = response;
+          this.userName = this.authorData[0].username;
+        },
+      });
       this.route.paramMap.subscribe({
         next: (param) => {
           if (param.get('projectId')) {
@@ -110,11 +157,11 @@ export class ProjectsEditFormComponent implements OnInit {
                 .indexOf(parseInt(this.projectIdUpdate))
             ];        
           this.title?.setValue(this.projectUpdate.title);
+          this.description?.setValue(this.projectUpdate.description);
           this.date?.setValue(this.projectUpdate.date);
           this.project_img?.setValue(this.projectUpdate.project_img);
           this.link_github?.setValue(this.projectUpdate.link_github);
-          this.description?.setValue(this.projectUpdate.description);
-  
+          this.preview = this.projectUpdate.project_url;
           if (!this.projectUpdate) {
             this.router.navigate(['/notfound']);
           }

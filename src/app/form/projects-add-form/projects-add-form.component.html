@@ -6,10 +6,10 @@
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
-            <h3 class="card-title text-center">
+            <h2 class="card-title text-center">
               Add Project 
-            </h3>
-  
+            </h2>
+            <app-file-upload [previewUrl]="preview" [fileName]="fileMessage" (imageToUpload)="getImageFile($event)"></app-file-upload>
             <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
               
   
@@ -28,19 +28,18 @@
                 />
                 <div *ngIf="date!.touched && date!.invalid" class="alert alert-danger">date is required</div>
               </div>
-              <label for="emailForm">Description</label>
+              <div class="form-group">
+                <label for="description">Description</label>
                 <textarea
                 formControlName="description" id="description"
-                  fid="emailForm"
+                  id="description"
                   type="description"
                   class="form-control"
                   rows="3"
                 ></textarea>
-              
-              <div class="form-group">
-                <label for="project_imgForm"></label>
-                <input formControlName="project_img" type="file" class="form-control-file" id="project_img" />
               </div>
+              
+              
               <div class="form-group">
                 <div class="form-group">
                     <label for="siteForm">link_github</label>

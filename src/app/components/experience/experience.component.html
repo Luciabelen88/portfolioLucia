@@ -1,7 +1,7 @@
 <app-section
   id="experience"
   title="Experience"
-  description="Aquí se muestran las experiences jaja"
+  description="Detail of tasks and jobs."
 >
   <ng-container
     *ngFor="
@@ -9,7 +9,7 @@
         | paginate
           : {
               id: 'experiencePaginator',
-              itemsPerPage: 2,
+              itemsPerPage: 3,
               currentPage: currentPageExperience
             }
     "
@@ -23,6 +23,7 @@
       [site]="experience.site"
       [description]="experience.description"
       [experienceId]="experience.experience_id"
+      [deletehash]="experience.experience_Img_deletehash"
     ></app-experience-card>
   </ng-container>
   <p *ngIf="experienceList.length === 0">
@@ -35,7 +36,7 @@
     previousLabel="Previous"
     nextLabel="Next"
   ></pagination-controls>
-  <div class="buttons"  *ngIf="Authervice.isLoggedIn()">
+  <div class="buttons"  *ngIf="AuthService.isLoggedIn()">
   <app-add-btn routerLink="newexperience"></app-add-btn>
 </div>
 </app-section>

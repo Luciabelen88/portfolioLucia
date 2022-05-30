@@ -1,6 +1,6 @@
 <app-section id="skills"
   title="Hard & Soft skills"
-  description="Aquí se muestran las habilidades duras y blandas"
+  description="List of hard and soft skills aquired through experience."
 >
   <ng-container
     *ngFor="
@@ -34,6 +34,5 @@
   
   <div class="buttons"  *ngIf="Authervice.isLoggedIn()">
     <app-add-btn routerLink="newskill"></app-add-btn>
-    <app-sort-skills-btn routerLink="sortskill"></app-sort-skills-btn>
   </div>
 </app-section>

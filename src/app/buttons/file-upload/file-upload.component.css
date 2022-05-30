@@ -1,0 +1,10 @@
+.file-input {
+    display: none;
+  }
+
+  img {
+    width: 200px;
+    display: block;
+    margin:auto;
+    margin-top: 6px;
+  }

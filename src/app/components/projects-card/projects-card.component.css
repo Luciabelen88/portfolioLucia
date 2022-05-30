@@ -6,9 +6,11 @@
   border-radius: 10px;
   background: #264749;
   border: 1px solid #458286;
-
 }
-
+.card-img-top{
+  width: 100%;
+ 
+}
 .btn {
   border: 5px solid;
   border-image-slice: 1;

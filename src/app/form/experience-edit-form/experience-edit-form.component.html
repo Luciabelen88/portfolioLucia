@@ -6,16 +6,12 @@
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
-            <h3 class="card-title text-center">
-              Edit Experience '{{ experienceUpdate?.title }}'
-            </h3>
-  
+            <h2 class="card-title text-center">
+              Edit Experience "{{ experienceUpdate?.title }}"
+            </h2>
+            <app-file-upload [previewUrl]="preview" [fileName]="fileMessage" (imageToUpload)="getImageFile($event)"></app-file-upload>
             <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
-              <div class="form-group">
-                <label for="logo_urlForm"></label>
-                <input formControlName="logo_url" type="file" class="form-control-file" id="logo_url" />
-              </div>
-  
+              
               <div class="form-group">
                 <label for="titleForm">Title</label>
                 <input formControlName="title" id="title" type="title" class="form-control"  />              
@@ -47,10 +43,10 @@
               </div>
   
               <div class="form-group">
-                <label for="emailForm">Description</label>
+                <label for="description">Description</label>
                 <textarea
                 formControlName="description" id="description"
-                  fid="emailForm"
+                  id="description"
                   type="description"
                   class="form-control"
                   rows="3"

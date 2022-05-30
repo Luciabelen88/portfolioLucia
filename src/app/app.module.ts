@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { LayoutModule } from '@angular/cdk/layout';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -52,9 +53,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SkillsLevelsService } from './components/service/skills_levels.service';
 import {MatCardModule} from '@angular/material/card';
 import { ImageUploadService } from './components/service/imageUpload.service';
-import { SkillsDandDComponent } from './components/skills-dand-d/skills-dand-d.component';
 import { SortSkillsBtnComponent } from './buttons/sort-skills-btn/sort-skills-btn.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { FileUploadComponent } from './buttons/file-upload/file-upload.component';
+import { FileServiceService } from './file-service/file-service.service';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { AuthInterceptInterceptor } from './auth-intercept.interceptor';
 
 @NgModule({
   declarations: [
@@ -91,13 +95,14 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     AboutmeEditFormComponent,
     EducationCardComponent,
     ExperienceCardComponent,
-    SkillsDandDComponent,
     SortSkillsBtnComponent,
+    FileUploadComponent,
   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    LayoutModule,
     FontAwesomeModule,
     HttpClientModule,
     NgxPaginationModule,
@@ -105,11 +110,12 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatSnackBarModule,
     MatProgressBarModule,
     MatCardModule,
+    RecaptchaModule,
     DragDropModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'editauthor/:user_name', component: BackgroundFormComponent },
+      { path: 'editauthor', component: AboutmeEditFormComponent },
       
       { path: 'editeducation/:educationId', component: BackgroundFormComponent },
       { path: 'neweducation', component: EducationAddFormComponent },
@@ -117,14 +123,14 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
       { path: 'newexperience', component: ExperienceAddFormComponent },
       { path: 'editSkill/:skillId', component: SkillsEditFormComponent },
       { path: 'newskill', component: SkillsAddFormComponent },
-      { path: 'sortskill', component: SkillsDandDComponent },
       { path: 'editproject/:projectId', component: ProjectsEditFormComponent },
       { path: 'newproject', component: ProjectsAddFormComponent },
 
       {path: 'error/:statuscode/:statusdescription', component: ErrorComponent },
       { path: '**', component: NotFoundComponent },
     ]),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    
   ],
   providers: [
     AboutService,
@@ -135,7 +141,13 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     SkillsService,
     AuthService,
     SkillsLevelsService,
-    ImageUploadService
+    ImageUploadService,
+    FileServiceService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

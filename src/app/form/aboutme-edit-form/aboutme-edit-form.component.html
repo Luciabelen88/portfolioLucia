@@ -6,10 +6,13 @@
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
-            <h3 class="card-title text-center">
-              Edit Author '{{ aboutmeUpdate?.title }}'
-            </h3>
-  
+            <h2 class="card-title text-center">
+              Edit Profile
+            </h2>
+            <div id="imagesContainer">
+              <app-file-upload [previewUrl]="previewBackground" [fileName]="fileMessageBackground" (imageToUpload)="getBackgound_img($event)"></app-file-upload>
+              <app-file-upload [previewUrl]="previewProfilePicture" [fileName]="fileMessageProfilePicture" (imageToUpload)="getProfile_img($event)"></app-file-upload>
+      </div>
             <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
               
   
@@ -29,18 +32,8 @@
                 <div *ngIf="profession!.touched && profession!.invalid" class="alert alert-danger">profession is required</div>
               </div>
               <div class="form-group">
-                <label for="profile_imgForm">Profile image</label>
-                <input formControlName="profile_img" type="file" class="form-control-file" id="profile_img" />
-                <div *ngIf="profile_img!.touched && profile_img!.invalid" class="alert alert-danger">Profile image is required</div>
-              </div>
-              <div class="form-group">
-                <label for="background_imgForm">Backgroung image</label>
-                <input formControlName="background_img" type="file" class="form-control-file" id="background_img" />
-                <div *ngIf="backgound_img!.touched && backgound_img!.invalid" class="alert alert-danger">Backgound image is required</div>
-              </div>
-              <div class="form-group">
-                <label for="cv_docForm">CV file</label>
-                <input formControlName="cv_doc" type="file" class="form-control-file" id="cv_doc" />
+                <input formControlName="cv_doc" type="text" class="form-control" aria-describedby="cv_doc" placeholder="cv_doc" >
+                <div *ngIf="cv_doc!.touched && cv_doc!.invalid" class="alert alert-danger">cv_doc is required</div>
               </div>
               <div class="form-group">
                 <label for="about_textForm">About me</label>
@@ -53,7 +46,7 @@
               </div>
               <div class="form-group">
                 <label for="date_birthForm">Date of birth</label>
-                <input formControlName="date"
+                <input formControlName="date_birth"
                 type="date"
                   class="form-control"
                   id="date"

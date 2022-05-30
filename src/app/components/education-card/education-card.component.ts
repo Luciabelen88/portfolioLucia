@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../service/auth.service';
+import { url } from '../service/url';
 
 
 @Component({
@@ -15,18 +16,24 @@ export class EducationCardComponent implements OnInit {
   @Input() finish_period: string = '';
   @Input() site: string = '';
   @Input() description: string = '';
+  @Input() deletehash: string = '';
 
   @Output() newItemEvent = new EventEmitter();
+
+  urlImagen = '';
 
   constructor(public service: AuthService) {}
 
   deleteEducation() {
     this.newItemEvent.emit({
       id: this.educationId,
-      title: this.title
+      title: this.title,
+      deletehash: this.deletehash,     
     });
   } 
 
-  ngOnInit(): void {} 
+  ngOnInit(): void {
+    this.logo_url = this.logo_url;
+  } 
 
 }

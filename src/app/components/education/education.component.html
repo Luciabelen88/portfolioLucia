@@ -1,7 +1,7 @@
 <app-section 
 id="education"
   title="Education"
-  description="Aquí se muestran los cursos, carreras y demás jaja"
+  description="Details on careers, certifications and courses"
 >
   <ng-container
     *ngFor="
@@ -9,7 +9,7 @@ id="education"
         | paginate 
           : {
               id: 'educationPaginator',
-              itemsPerPage: 2,
+              itemsPerPage: 3,
               currentPage: currentPageEducation
             }
     "
@@ -23,6 +23,7 @@ id="education"
       [site]="education.site"
       [description]="education.description"
       [educationId]="education.education_id"
+      [deletehash]="education.education_img_deletehash"
     ></app-education-card>
   </ng-container>
   <p *ngIf="educationList.length === 0">
@@ -35,7 +36,7 @@ id="education"
     previousLabel="Previous"
     nextLabel="Next"
   ></pagination-controls>
-  <div  *ngIf="Authervice.isLoggedIn()">
+  <div  *ngIf="AuthService.isLoggedIn()">
   <app-add-btn routerLink="neweducation"></app-add-btn>
   </div> 
 </app-section>

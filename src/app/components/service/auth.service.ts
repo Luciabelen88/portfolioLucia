@@ -12,12 +12,12 @@ export class AuthService {
 
   login(credentials: any) {
     return this.http
-      .post(url + '/login', credentials, { responseType: 'text' })
+      .post(url + '/authenticate', credentials, { responseType: 'text' })
       .pipe(
         map((response) => {
           let result = response;
           if (result) {
-            localStorage.setItem('token', result);
+            localStorage.setItem('token', JSON.parse(result).jwt);
             return true;
           }
           return false;
@@ -38,6 +38,13 @@ export class AuthService {
     let expirationDate = jwtHelper.getTokenExpirationDate(token!);
     let isExpired = jwtHelper.isTokenExpired(token!);
     return !isExpired;
+  }
+
+  getToken() {
+    if(this.isLoggedIn()){
+      return 'Bearer ' + localStorage.getItem('token');
+    }
+    return ""
   }
 
 }

@@ -1,4 +1,4 @@
-<app-section class="project" title="Projects" description="Aquí se muestran las projects">
+<app-section class="project" title="Projects" description="Details of projects.">
   <div id="project">
     <ng-container
       *ngFor="
@@ -19,8 +19,12 @@
         [project_img]="project.project_img"
         [link_github]="project.link_github"
         [projectId]="project.project_id"
+        [deletehash]="project.img_deletehash"
       ></app-projects-card>
     </ng-container>
+    <p *ngIf="projectsList.length === 0">
+      <b>No projects added yet.</b>
+    </p>
     <pagination-controls
       id="projectPaginator"
       (pageChange)="currentPageProject = $event"

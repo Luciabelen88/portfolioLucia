@@ -16,14 +16,12 @@ export class SkillsComponent implements OnInit {
   auxiliarSkillsList: any[any] = [];
 
   constructor(private service: SkillsService, private snackBar: MatSnackBar, public Authervice: AuthService) {
-    // let service = new SkillsService();
-    // this.skillsList = service.getskill();
-    // console.log(this.skillsList);
+  
   }
 
   deleteSkill(event: any) {
     this.skillsList = this.skillsList.filter(
-      (item: any) => item.skill_Id !== event.id
+      (item: any) => item.skills_id !== event.id
     );
     this.service.delete(event.id).subscribe({
       next: (response) => {
@@ -31,9 +29,9 @@ export class SkillsComponent implements OnInit {
         snackBar(
           this.snackBar,
           " Hard or Soft Skill '" + event.title + " 'deleted",
-          'red-snackbar',
+          'green-snackbar',
           'X'
-        );
+        ); 
       },
       error: (error: any) => {
         snackBar(

@@ -1,7 +1,7 @@
 
 <div class="container">
   <div [style]="{'visibility': invalidLoggedIn}" class="alert alert-danger" role="alert">
-    Invalid email or password! Try again!
+    Invalid user name or password! Try again!
   </div>
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -11,15 +11,17 @@
             
             <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
               <div class="form-floating mb-3">
-                <input formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <div *ngIf="email!.touched && email!.invalid" class="alert alert-danger">Email is required</div>
-                <label for="floatingInput">Email address</label>
+                <input formControlName="user_name" type="user_name" class="form-control" id="floatingInput" placeholder="User name">
+                <div *ngIf="user_name!.touched && user_name!.invalid" class="alert alert-danger">User name is required</div>
+                <label for="floatingInput">User name</label>
               </div>
               <div class="form-floating mb-3">
                 <input formControlName="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <div *ngIf="email!.touched && email!.invalid" class="alert alert-danger">Password is required</div>
+                <div *ngIf="password!.touched && password!.invalid" class="alert alert-danger">Password is required</div>
                 <label for="floatingPassword">Password</label>
               </div>
+              <!-- <re-captcha (resolved)="resolve($event)" [siteKey]="siteKey"></re-captcha>
+              <div *ngIf="captchaVisi" class="alert alert-danger" class="alert alert-danger">Invalid Captcha</div> -->
               <div class="d-grid">
                 <button class="btn btn-info btn-login text-uppercase fw-bold" type="submit">Login</button>
               </div>
