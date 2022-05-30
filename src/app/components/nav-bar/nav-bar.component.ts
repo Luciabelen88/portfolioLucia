@@ -6,7 +6,7 @@ import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faTools } from '@fortawesome/free-solid-svg-icons';
-
+import { AboutService } from '../service/about.service';
 
 
 @Component({
@@ -23,13 +23,20 @@ export class NavBarComponent implements OnInit {
   faBars =faBars;
   faTools =faTools;
 
-  
+  author:any;
+  authorProfilePicture: String = '';
 
-  constructor() { 
+  constructor(public service: AboutService) { 
     
   }
 
   ngOnInit(): void {
+    this.service.getAll().subscribe({
+      next: (response) => {
+        this.author = response;
+        this.author = this.author[0];
+        this.authorProfilePicture = this.author.profile_img;
+      }});
   }
 
 }

@@ -1,1 +1,1 @@
-export let url: String="http://localhost:8080";
+export let url: String="https://portfolioluciaserver.herokuapp.com";

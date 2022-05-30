@@ -26,7 +26,7 @@ export class ProjectsEditFormComponent implements OnInit {
     title: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     date: new FormControl('', Validators.required),
-    project_img: new FormControl('', Validators.required),
+    project_img: new FormControl(''),
     link_github: new FormControl('', Validators.required),
   });
 
@@ -46,16 +46,16 @@ export class ProjectsEditFormComponent implements OnInit {
     return this.form.get('link_github');
   }
 
-  private authorData: any;
-  private userName: string = '';
   public imageFile: any;
   private imageFileToUpload: any;
   public preview: any;
   public fileMessage: any;
+  private authorData: any;
+  private userName: string = '';
 
   getImageFile(imageFile: any) {
     this.imageFile = imageFile;
-  }
+  } 
 
   constructor(public router: Router,
     private route: ActivatedRoute,
@@ -97,7 +97,7 @@ export class ProjectsEditFormComponent implements OnInit {
                       return this.fileService.uploadFile(formData);
                     })
                   );
-              }
+              } 
               return of({});
             })
           )
@@ -129,6 +129,9 @@ export class ProjectsEditFormComponent implements OnInit {
           });
       } else {
         this.form.markAllAsTouched();
+        if (!this.imageFile) {
+          this.imageFile = false;
+        }
       }
     }
   
@@ -159,9 +162,8 @@ export class ProjectsEditFormComponent implements OnInit {
           this.title?.setValue(this.projectUpdate.title);
           this.description?.setValue(this.projectUpdate.description);
           this.date?.setValue(this.projectUpdate.date);
-          this.project_img?.setValue(this.projectUpdate.project_img);
           this.link_github?.setValue(this.projectUpdate.link_github);
-          this.preview = this.projectUpdate.project_url;
+          this.preview = this.projectUpdate.project_img;
           if (!this.projectUpdate) {
             this.router.navigate(['/notfound']);
           }
